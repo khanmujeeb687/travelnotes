@@ -29,7 +29,7 @@ bool show;
     return Scaffold(
       appBar: AppBar(
         backgroundColor: black,
-        title: Text("Notes",style: TextStyle(color: white),),
+        title: Text("Notes",style: TextStyle(color: Colors.white),),
       ),
       backgroundColor: black,
       body: Container(

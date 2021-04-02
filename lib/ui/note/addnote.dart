@@ -23,7 +23,7 @@ class AddNote extends StatefulWidget {
 
 class _AddNoteState extends State<AddNote> {
   TextEditingController _controller;
-Position _position;
+  Position _position;
   @override
   void initState() {
     _controller=TextEditingController(text: widget.note!=null?widget.note:"");
@@ -44,70 +44,71 @@ Position _position;
         body: Container(
           margin: EdgeInsets.only(top: 50),
           padding: EdgeInsets.all(6),
-          child: Center(
-            child: SingleChildScrollView(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: <Widget>[
-                  Container(
-                    child: Hero(
-                      tag:"adr",
-                      child: Material(
-                        color: Colors.transparent,
-                        child: ClipRRect(
-                          borderRadius: BorderRadius.circular(50),
-                          child: BackdropFilter(
-                            filter: ImageFilter.blur(sigmaY: 5,sigmaX: 5),
-                            child: Container(
-                              padding: EdgeInsets.all(20),
-                              decoration: BoxDecoration(
-                                  color: grey.withOpacity(0.4)
-                              ),
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                                mainAxisSize: MainAxisSize.max,
-                                children: <Widget>[
-                                  IconButton(
-                                    icon: Icon(Icons.navigation,color: blue,size: 30,),
-                                    onPressed: _launchMapsUrl,
-                                  ),
-                                  Flexible(
-                                    child: Text(widget.address,style: TextStyle(color: white),),
-                                  ),
-                                  IconButton(
-                                    icon: Icon(Icons.save,color: blue,size: 30,),
-                                    onPressed:(){
-                                      _savenote("success");
-                                    },
-                                  )
-                                ],
-                              ),
+          child: SingleChildScrollView(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                Container(
+                  child: Hero(
+                    tag:"adr",
+                    child: Material(
+                      color: Colors.transparent,
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.circular(50),
+                        child: BackdropFilter(
+                          filter: ImageFilter.blur(sigmaY: 5,sigmaX: 5),
+                          child: Container(
+                            padding: EdgeInsets.all(20),
+                            decoration: BoxDecoration(
+                                color: grey.withOpacity(0.4)
+                            ),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                              mainAxisSize: MainAxisSize.max,
+                              children: <Widget>[
+                                IconButton(
+                                  icon: Icon(Icons.navigation,color: blue,size: 30,),
+                                  onPressed: _launchMapsUrl,
+                                ),
+                                Flexible(
+                                  child: Text(widget.address,style: TextStyle(color: white),),
+                                ),
+                                IconButton(
+                                  icon: Icon(Icons.save,color: blue,size: 30,),
+                                  onPressed:(){
+                                    _savenote("success");
+                                  },
+                                )
+                              ],
                             ),
                           ),
                         ),
                       ),
                     ),
                   ),
-                  TextField(
+                ),
+                LimitedBox(
+                  maxHeight: 800,
+                  child: TextField(
                     controller: _controller,
                     decoration: InputDecoration(
+                        border: InputBorder.none,
                         hintText: "Write something here..",
-                    contentPadding: EdgeInsets.only(top: 50,left: 20)
+                        contentPadding: EdgeInsets.only(top: 50,left: 20)
                     ),
                     style: TextStyle(
-                      color: white
+                        color: white
                     ),
+                    maxLines: null,
                     scrollPadding: EdgeInsets.all(20.0),
                     keyboardType: TextInputType.multiline,
-                    maxLines: 99999,
                     autofocus: true,
-                  )
-                ],
-              ),
+                  ),
+                )
+              ],
             ),
           ),
         ),
-        resizeToAvoidBottomPadding: true,
       ),
     );
   }
@@ -157,3 +158,4 @@ Position _position;
 
 
 }
+
